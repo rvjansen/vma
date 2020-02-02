@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VMA", "VMA.vcproj", "{C61A7D35-5F99-4772-9623-F5907B04CD99}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VMAgui", "VMAgui.vcproj", "{00D9A22C-35DD-4A01-8BDA-B2A30B4BDBD6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C61A7D35-5F99-4772-9623-F5907B04CD99} = {C61A7D35-5F99-4772-9623-F5907B04CD99}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C61A7D35-5F99-4772-9623-F5907B04CD99}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C61A7D35-5F99-4772-9623-F5907B04CD99}.Debug|Win32.Build.0 = Debug|Win32
+		{C61A7D35-5F99-4772-9623-F5907B04CD99}.Release|Win32.ActiveCfg = Release|Win32
+		{C61A7D35-5F99-4772-9623-F5907B04CD99}.Release|Win32.Build.0 = Release|Win32
+		{00D9A22C-35DD-4A01-8BDA-B2A30B4BDBD6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{00D9A22C-35DD-4A01-8BDA-B2A30B4BDBD6}.Debug|Win32.Build.0 = Debug|Win32
+		{00D9A22C-35DD-4A01-8BDA-B2A30B4BDBD6}.Release|Win32.ActiveCfg = Release|Win32
+		{00D9A22C-35DD-4A01-8BDA-B2A30B4BDBD6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

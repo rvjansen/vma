@@ -1,0 +1,176 @@
+Version 12.081a
+---------------
+1)  Re-added support for z/OS.
+
+Version 12.080a
+---------------
+1)  Fixed a critter that caused spurious hex zeros with fixed
+    legnth records.
+    (fix provided by John P. Hartmann))
+2)  Should now build on Linux without static wx libs.
+
+Version 11.216a
+---------------
+1)  Fixed a critter that caused invalid headers.
+    (fix provided by John P. Hartmann))
+2)  Fixed running on Mac without wxWidgets libs installed.
+    (reported by Ivica Brodaric)
+
+Version 10.072a
+---------------
+1)  Fixed a critter when adding files to existing archives.
+    (reported by Kris Buelens)
+2)  Simplified vma_commit()
+
+Version 10.070a
+---------------
+1)  First release to support creating VMARCs.  Only ASIS and LZW
+    compression supported so far...S2 will come later.
+2)  Building on CMS and z/OS no longer supported.
+
+Version 09.108a
+---------------
+1)  Made GUI fully Unicode buildable against wxWidgets 2.8.9+.
+
+Version 09.092a
+---------------
+1)  Added toleration for unicode builds
+
+Version 07.011a
+---------------
+1)  Relaxed the file mode check to allow modes 0-9 instead of 1-6.
+2)  Attempt to protect corrupt hives.
+
+Thanks to Jeff Aylor for reporting those.
+
+Version 06.112a
+---------------
+1)  First "official" release for the Mac...no major changes.
+
+Version 05.191a
+---------------
+1)  The biggest change is that the GUI interface is now based on 
+    wxWidgets.  This makes it usable on any platform that is supported
+    by wxWidgets.
+2)  Binary files were being extracted as text if the Auto option was
+    used.
+3)  VMARC files wrongly converted to ASCII during file transfers is
+    now detected and user notified. (Requested by Jan de Wet)
+4)  Version information placed in the status bar.  It was requested
+    to go in the About information, but I can't figure out how to add
+    to the system menu with wxWidgets.  So, to the status bar it went.
+    (Requested by Jan de Wet)
+5)  Window placement saved and restored across runs.
+6)  Removing file extension from the Windows registry now scans for 
+    assigned extensions rather than using the contents of the edit
+    box.
+7)  All extensions are now removed prior to adding new ones.
+8)  Probably one or two bugs introduced.  ;-)
+
+There is one known issue with the CMS version that prevents file
+extraction when using the "-s" command line option.  This will be 
+looked into and fixed in the next version.
+
+Version 05.180a
+---------------
+1)  Re-added the extension filtering to the Open dialog.
+
+    It now uses the associated file extensions from the Settings dialog
+
+2)  Added an "Extract to..." option to the Explorer context menu.
+
+    This allows you to right click a VMARC in Explorer and extract it,
+    saving 1 entire click (yippee! ;-D)
+
+    You'll have to go back into Settings and click Update to activate
+    this change.
+
+3)  Corrected the extracted date being off by 1.  I oopsed and didn't
+    notice the month was 0-based.  (The month in the VMARC header is
+    1-based.)
+
+    You may still notice that the hour is off by one.  This relates to
+    daylight savings time and how your system is handling it.
+
+    Right now, my system is set to Central Time with automatic adjustment
+    for DST and extracted files are always one hour off.  However, if I 
+    turn off the DST setting, the extracted files have the same date
+    as the ones in the VMARC.
+
+4)  Changed include to allow compiling under OSX.
+
+
+Version 05.178a
+---------------
+1)  Added user selectable character maps.  For command line users, the "-u"
+    option is used to specify the path names to the UCM files.  For GUI
+    users, change them in the Settings dialog.
+
+    I chose to use UCM files for this as not all platforms have EBCDIC
+    conversion tables.  This a shame since iconv() is quite easy to use.
+    But, my guess is that this will be a little used feature so having
+    to acquire the correct UCM won't be too much of a hassle for folks.
+
+    The UCMs can be obtained at:
+
+    http://dev.icu-project.org/cgi-bin/viewcvs.cgi/charset/data/ucm/
+
+2)  I recreated the internal conversion tables.
+
+    They now represent an IBM-1047 to ISO-8895-1 mapping.  This can
+    be easily overidden using UCMs.
+
+3)  I added a new "-t" option to the command line version to allow translation
+    without appending line feeds.  The "-a" option still functions as before,
+    but internally it turns on "-t" and causes linefeeds to be appended to 
+    text records.
+
+4)  A record length problem introduced in 05.174a was corrected.
+
+5)  The "Format" registry setting in VMAWin was not being handled correctly.
+
+6)  The CMS version now restores the date/time of the extracted files.  It
+    uses the same method as VMARC.
+
+    This was the first instance where I had an issue of running a z/OS
+    compiled module under CMS.  The program needs to determine at runtime
+    where it is executing and the uname() function is perfect for this.
+    However, the utsname structure it uses is not the same size between
+    the 2 systems, so when the module executed on z/VM, the stack would
+    get overlayed.  Took quite a while to figure out why, but a workaround
+    was fairly simple.
+
+7)  Added the first time users message that suggests they setup the file
+    associations.
+
+
+Version 05.174a
+---------------
+Geez, what didn't change...let's see...
+VMARC file processing separated from UI processing
+Added subfile type (Text or Binary) guesstimate
+  The first 1024 bytes are examined for characters < 0x20 and if any
+  are found, it is considered binary.  It doesn't always guess right,
+  but it gets it most of the time.
+Fixed several problems with ASIS processing
+Added VMAWin - a little GUI interface
+Fixed several problems found by those brave souls that tried it early
+Disabled file time setting under CMS and z/OS until a workaround is found
+Better (more) error detection
+New distribution layout
+
+Version 05.167b
+---------------
+Fixed filtering (missed a period) - Reported by Alex Brodsky
+
+Version 05.167a
+---------------
+Added subfile filtering.
+Added -c option to convert subfiles names to lowercase
+Added -m option to allow filemode specification
+Added -s option to allow a slightly slow method of skipping subfiles
+Added setting of last access and modification times (this does not yet
+    work for standard CMS files and z/OS datasets)
+Added a little summary of how many subfiles were located and/or bypassed
+Changed how to locate subfiles so as not to be locked into a static
+    record length and to support self-extracting VMARCs
