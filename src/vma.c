@@ -548,7 +548,7 @@ usage( void )
     printf( "  -q        do not list files\n" );
     printf( "  -r        record format\n" );
     printf( "  -s        store method...asis, lzw, s2\n" );
-    printf( "  -t        translate files to ASCII on extration\n" );
+    printf( "  -t        translate files to ASCII on extraction\n" );
     printf( "            or to EBCDIC on addition\n" );
     printf( "  -u f,t    (f)rom and (t) UCM filenames\n" );
     printf( "  -v        verbose listing\n" );
@@ -563,7 +563,7 @@ usage( void )
            "  one or more file names to be added to the VMARC archive\n" );
     printf( "  specify ',' and fn.ft.fm to store file with a different name\n\n" );
     printf( "f,t:\n" );
-    printf( "  paths to translateion tables (see README)\n" );
+    printf( "  paths to translation tables (see README)\n" );
 
     exit( 1 );
 }
@@ -586,6 +586,10 @@ main( int argc, char *argv[] )
     /*
     || Process command flags
     */
+    if (argc=1) {
+      usage();
+      exit(99);
+    }
     while( ( rc = getopt( argc, argv, "achl:m:qr:s:tu:vxV" ) ) != -1 )
     {
         switch( rc )
@@ -692,6 +696,9 @@ main( int argc, char *argv[] )
                 break;
 
             case 'h':
+	      usage();
+	      break;
+	      
             default:
                 usage();
                 break;
