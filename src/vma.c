@@ -586,7 +586,7 @@ main( int argc, char *argv[] )
     /*
     || Process command flags
     */
-    if (argc=1) {
+    if (argc==1) {
       usage();
       exit(99);
     }
