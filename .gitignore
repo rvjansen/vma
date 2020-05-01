@@ -1,1 +1,5 @@
 *.o
+VMAgui.app/Contents/MacOS/VMAgui
+src/version.h
+src/vma
+src/vmagui

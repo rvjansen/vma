@@ -1,3 +1,16 @@
+This is a copy of Leland Lucius' vma and vmagui code, because
+I needed a place to keep some fixes to the code. I also store
+executables for Linux and macOS here. No Windows, sorry.
+
+Fixed here:
+
+- a segfault on starting vma without arguments
+- some small spelling errors on messages
+
+To be fixed:
+
+- a segfault on trying to arc a zero bytes file
+
 
 
 VMA/VMAgui - (Un)Archiver for VMARC files
