@@ -1,3 +1,4 @@
+.DS_Store
 *.o
 VMAgui.app/Contents/MacOS/VMAgui
 src/version.h
