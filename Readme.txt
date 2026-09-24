@@ -2,6 +2,9 @@ This is a copy of Leland Lucius' vma and vmagui code, because
 I needed a place to keep some fixes to the code. I also store
 executables for Linux and macOS here. No Windows, sorry.
 
+The macOS arm64 executable is signed and stored in a notarized and stapled
+.dmg image; this should give you (and me) less trouble with the SIP mechanisms.
+
 Fixed here:
 
 - a segfault on starting vma without arguments
